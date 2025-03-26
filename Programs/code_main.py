@@ -1,6 +1,8 @@
-from HamiltonianSystem import HamiltonianSystem
+from HamiltonianSystemID import HamiltonianSystemID
 
-T,V = HamiltonianSystem( 1.0,0.0)
 
-print(T)
-print(V)
+wr,w0,r,EMconst = HamiltonianSystemID(600)
+print(wr)
+print(w0)
+print(r)
+print(EMconst)
