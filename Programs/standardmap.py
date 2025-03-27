@@ -32,10 +32,5 @@ def frame(e, N=100, r=1):
 #    constant colour represents the same original point but after multiple iterations'''
 #    P, Q, colours = frame(e, N, r)
 #
-#    plt.scatter(Q,P, s=.1, c=colours)
-#    
-#    plt.xlabel('Q')
-#    plt.ylabel('P')
-#    plt.show()
 
 #plot(e=3.15,N=150,r=0.5)

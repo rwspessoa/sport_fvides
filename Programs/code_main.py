@@ -1,6 +1,7 @@
 from HamiltonianSystemID import HamiltonianSystemID
 from HamiltonianSystem import HamiltonianSystem
 from numpy import arange
+import matplotlib.pyplot as plt
 import standardmap as sm
 import numpy as np
 
@@ -21,9 +22,19 @@ print(zz)
 #P = P.reshape(len(p0)*len(q0))
 #Q = Q.reshape(len(p0)*len(q0))
 
-t, z = sm.frame(3.15, 100, 1)
+t, z = sm.frame(1, 250, 1)
 
 print(z)
+
+
+
+plt.scatter(z[0], z[1], c='blue', s=1, alpha=0.5)
+
+plt.xlabel('Q')
+plt.ylabel('P')
+plt.show()
+
+
 #print(t.shape)
 #print(z.dtype)
 
