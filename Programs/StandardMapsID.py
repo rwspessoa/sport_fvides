@@ -11,7 +11,7 @@ def StandardMapsID(K,NE,p0,q0,S):
     from standardmap import standardmap
     from K4SymProjector import K4SymProjector
     from SpaRCSim import SpaRCSim
-    from matplotlib.pyplot import figure,show,grid,tight_layout
+    from matplotlib.pyplot import figure,show,grid,tight_layout,scatter,plot,xlabel,ylabel,title
     from numpy import array, kron, identity, zeros
     from numpy.linalg import norm
     from time import time
@@ -72,6 +72,23 @@ def StandardMapsID(K,NE,p0,q0,S):
     tight_layout()
 
     show()
+
+    
+    # Create a scatter plot
+    #scatter(t, X[:,0], color='blue', marker='o',linestyle='--', linewidth=0.5)
+    plot(t, X[:,0], color='blue', marker='o',linestyle='--', linewidth=0.5)
+    # Add title and labels
+    title("Simple Scatter Plot")
+    xlabel("X-axis")
+    ylabel("Y-axis")
+
+    # Display grid for better readability
+    grid(True)
+
+    # Show the plot
+    show()
+
+
 
     fig0.savefig('fig_standardmap_ID_1.png',dpi=600,format='png')
     EMconst = norm(g1@wr-wr@G1)+norm(g2@wr-wr@G2)+norm(g1@g2@wr-wr@G1@G2)

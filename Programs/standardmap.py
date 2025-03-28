@@ -25,17 +25,3 @@ def standardmap(e, N=100, p0=1, q0=0):
         results[i] = [P, Q]
 
     return t, results
-
-# def plot(e, N=200, r=.5):
-#    '''plots N iterations of the Chirikov map with parameter e and resolution r
-#    
-#    constant colour represents the same original point but after multiple iterations'''
-#    P, Q, colours = frame(e, N, r)
-#
-#    plt.scatter(Q,P)
-    
-#    plt.xlabel('Q')
-#    plt.ylabel('P')
-#    plt.show()
-
-#plot(e=3.15,N=150,r=0.5)
