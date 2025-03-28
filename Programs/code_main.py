@@ -1,5 +1,6 @@
 from HamiltonianSystemID import HamiltonianSystemID
 from HamiltonianSystem import HamiltonianSystem
+from StandardMapsID import StandardMapsID 
 from numpy import arange
 import matplotlib.pyplot as plt
 import standardmap as sm
@@ -9,30 +10,33 @@ import numpy as np
 
 tt, zz = HamiltonianSystem()
 
-
-print(tt.shape)
-print(zz.dtype)
-print(zz.shape)
-print(zz)
-#p0 = np.arange(0, 2*np.pi, 1)
-#q0 = np.arange(0, 2*np.pi, 1)
-
-#P, Q = np.meshgrid(p0, q0)
-
-#P = P.reshape(len(p0)*len(q0))
-#Q = Q.reshape(len(p0)*len(q0))
-
-t, z = sm.frame(1, 250, 1)
-
-print(z)
+wr,w0,r,EMconst = StandardMapsID(600)
 
 
+#t, z = sm.frame(0.001, 1000, 1)
+#plt.scatter(z[:,0], z[:,1], marker='o', c='lightblue', s=5, alpha=0.5)
+#t, z = sm.frame(0.01, 1000, 1)
+#plt.scatter(z[:,0], z[:,1], marker='o', c='blue', s=5, alpha=0.5)
+#t, z = sm.frame(0.1, 1000, 1)
+#plt.scatter(z[:,0], z[:,1], marker='o', c='darkblue', s=5, alpha=0.5)
+#t, z = sm.frame(0.5, 1000, 1)
+#plt.scatter(z[:,0], z[:,1], marker='o', c='magenta', s=5, alpha=0.5)
+#t, z = sm.frame(0.75, 1000, 1)
+#plt.scatter(z[:,0], z[:,1], marker='o', c='darkorange', s=5, alpha=0.5)
+#t, z = sm.frame(0.85, 1000, 1)
+#plt.scatter(z[:,0], z[:,1], marker=4, c='darkorange', s=5, alpha=0.5)
+#t, z = sm.frame(0.95, 1000, 1)
+#plt.scatter(z[:,0], z[:,1], marker=4, c='black', s=5, alpha=0.5)
+#t, z = sm.frame(1, 1000, 1)
+#plt.scatter(z[:,0], z[:,1], marker='o', c='green', s=5, alpha=0.5)
 
-plt.scatter(z[0], z[1], c='blue', s=1, alpha=0.5)
 
-plt.xlabel('Q')
-plt.ylabel('P')
-plt.show()
+
+
+# plt.xlabel('Q')
+# plt.ylabel('P')
+# plt.show()
+
 
 
 #print(t.shape)
