@@ -7,7 +7,7 @@ Example 1:
     wr,w0,r,EMconst = HamiltonianSystemID(600)
 @author: Fredy Vides, Department of Statistics and Research, CNBS, Honduras
 """
-def StandardMapsID(S):
+def StandardMapsID(K,NE,p0,q0,S):
     from standardmap import standardmap
     from K4SymProjector import K4SymProjector
     from SpaRCSim import SpaRCSim
@@ -17,7 +17,7 @@ def StandardMapsID(S):
     from time import time
     
 #   t,X = HamiltonianSystem()
-    t,X = standardmap(6,1000,1)
+    t,X = standardmap(K,NE,p0,q0)
 
     K4gen = array([[0,1,-1,0],[1,0,0,-1]])
     L = X.shape[0]
