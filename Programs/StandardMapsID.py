@@ -22,7 +22,7 @@ def StandardMapsID(K,NE,p0,q0,S):
     K4gen = array([[0,1,-1,0],[1,0,0,-1]])
     L = X.shape[0]
     s = X.shape[1]
-    l = 5
+    l = 8
     tp = 3
     nz = int(s*l+(s*l)*(s*l+1)/2+(s*l)**3+1)
     g1 = kron(K4gen[:,:s],identity(l))
