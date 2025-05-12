@@ -7,7 +7,7 @@ Example 1:
     wr,w0,r,EMconst = HamiltonianSystemID(600)
 @author: Fredy Vides, Department of Statistics and Research, CNBS, Honduras
 """
-def StandardMapsID(K,NE,p0,q0,S):
+def StandardMapsID(K,M,NE,p0,q0,S):
     from standardmap import standardmap
     from K4SymProjector import K4SymProjector
     from SpaRCSim import SpaRCSim
@@ -17,17 +17,18 @@ def StandardMapsID(K,NE,p0,q0,S):
     from time import time
     
 #   t,X = HamiltonianSystem()
-    t,X = standardmap(K,NE,p0,q0)
+    t,X = standardmap(K,M,NE,p0,q0)
 
-    K4gen = array([[0,1,-1,0],[1,0,0,-1]])
-    L = X.shape[0]
+    #K4gen = array([[0,1,-1,0],[1,0,0,-1]])
+    K4gen = array([[1,0,K],[1,1,K]])
+    L = X.shape[0]   # Why it doesn't use L in this function? 
     s = X.shape[1]
-    l = 8
+    l = 5 
     tp = 3
     nz = int(s*l+(s*l)*(s*l+1)/2+(s*l)**3+1)
     g1 = kron(K4gen[:,:s],identity(l))
     g2 = kron(K4gen[:,s:],identity(l))
-    dn = int(((s*l)**(tp+1)-s*l)/(s*l-1)+1)
+    dn = int(((s*l)**(tp+1)-s*l)/(s*l-1)+1)  # How can I define this value?
     G1 = zeros((dn,dn))
     G2 = zeros((dn,dn))
     G1[:s*l,:s*l] = g1
