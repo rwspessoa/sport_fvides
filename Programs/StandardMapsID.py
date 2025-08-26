@@ -24,7 +24,7 @@ def StandardMapsID(K,M,NE,p0,q0,S):
     K4gen = array([[1,0,K],[1,1,K]])
     L = X.shape[0]   # Why it doesn't use L in this function? 
     s = X.shape[1]
-    l = 5 
+    l = 10 
     tp = 3
     nz = int(s*l+(s*l)*(s*l+1)/2+(s*l)**3+1)
     g1 = q_kron(K4gen[:,:s],identity(l),0.8)

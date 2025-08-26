@@ -18,6 +18,8 @@ def HamiltonianSystemID(S):
     from time import time
     
     t,X = HamiltonianSystem()
+
+    print(X.shape)
     K4gen = array([[0,1,-1,0],[1,0,0,-1]])
     L = X.shape[0]
     s = X.shape[1]
@@ -38,6 +40,7 @@ def HamiltonianSystemID(S):
     G2[((s*l)**(tp-1)+s*l):-1,((s*l)**(tp-1)+s*l):-1] = q_kron(g2,q_kron(g2,g2,0.8),0.8)
     G2[-1,-1] = 1
     t0 = time()
+    print("Parece tudo ok!")
     w0,data,r = K4SymProjector(X.T,"svd",l,S,1,tp,nz,g1,g2,G1,G2,1e-3,1e-4)
     wr = w0@r
     print("Elapsed time: ",time()-t0)

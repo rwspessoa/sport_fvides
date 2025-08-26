@@ -7,13 +7,21 @@ RNLMap Reduced nonlinear data mapping
 @author: Fredy Vides
 """
 def RNLMap(R,x,tp):
-    from numpy import append, kron
+    from numpy import append, kron,asarray
     from qkron import q_kron   ##  rwsp
 
+    print("x.shape start",x.shape)
     p = x
     q = p
     for k in range(tp-1):
+        print("parece tudo ok11!",k)
+        print("x",x)
+        print("q",q)
+    #    x = asarray(x, dtype=float)
+    #    q = asarray(q, dtype=float)
+        print("x.shape",x.shape) 
         q = q_kron(x,q,0.8)
+        print("q after",q)
         p = append(p,q)
     p = R@append(p,1)
     return p

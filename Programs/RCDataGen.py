@@ -10,25 +10,34 @@ def RCDataGen(data,L,S,ss,tp):
     from RFactor import RFactor
     from RNLMap import RNLMap
     
-    
+    print("parece tudo ok4!")   
+
     def DataGenerator(X,R,tp,r):
         Y = zeros((r.shape[0],R))
+        print("parece tudo ok9!")
+
         for j in range(R):
+            print("parece tudo ok10!",j)
+            print(X[:,j])
+            print(r)
             Y[:,j] = RNLMap(r,X[:,j],tp)
         return Y
     
+    
+    print("parece tudo ok5!")
     data = data[:,0:S:ss]
     s = data.shape
     sL = s[0]*L
     S = s[1]
     R = S-L+1
-    
+    print("parece tudo ok6!")
     r = RFactor(s[0], L, tp)
     
     Ldata = zeros((sL,R))
     for k in range(s[0]):
         Ldata[k*L:(k+1)*L,:] = hankel(data[k,:L],data[k,(L-1):S])
-    
+    print("parece tudo ok7!")
     D = DataGenerator(Ldata,R,tp,r)
+  #  print("parece tudo ok9!")
             
     return D,r

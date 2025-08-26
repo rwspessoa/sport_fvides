@@ -32,7 +32,7 @@ def q_product(x, y, q: float):
     xm = x
     ym = y
 
-    base = np.power(xm, 1.0 - q) + np.power(ym, 1.0 - q) - 1.0
+    base = np.power(abs(xm), 1.0 - q) + np.power(abs(ym), 1.0 - q) - 1.0
     base = np.maximum(base, 0.0)
 
     # Where base>0 apply power; else 0
@@ -54,16 +54,30 @@ def q_kron(A: np.ndarray, B: np.ndarray, q: float) -> np.ndarray:
     A = np.asarray(A, dtype=float)
     B = np.asarray(B, dtype=float)
 
+    # Reshape 1D arrays to 2D column vectors
+    if A.ndim == 1:
+        A = A[:, np.newaxis]
+    if B.ndim == 1:
+        B = B[:, np.newaxis]
+
     if q == 1.0:
         return np.kron(A, B)
+    
+    print("A:")
 
-    m, n = A.shape
-    p, r = B.shape
+    m = A.shape[0]
+    n = A.shape[1]
+    p = B.shape[0]
+    r = B.shape[1]
+
+    print("m,n,p,r") 
+    print(m,n,p,r)
     out = np.zeros((m * p, n * r), dtype=float)
 
     for i in range(m):
         for j in range(n):
             # bloco (i,j) recebe A[i,j] ⊗_q B, elemento a elemento
+
             out[i*p:(i+1)*p, j*r:(j+1)*r] = q_product(A[i, j], B, q)
 
     return out
