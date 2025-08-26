@@ -6,6 +6,7 @@ K4-symmetric projector
 
 def Z5SymProjector(data,solver,L,S,ss,tp,nz,g1,G1,tol,delta):
     from numpy import reshape, identity, kron, diag, zeros
+    from qkron import q_kron   ##  rwsp
     from scipy.linalg import svd
     from RCDataGen import RCDataGen
     from spsolver import spsolver
@@ -25,7 +26,7 @@ def Z5SymProjector(data,solver,L,S,ss,tp,nz,g1,G1,tol,delta):
     n1 = (sL,D0.shape[1])
     m1 = n1[0]*n1[1]
     E = identity(m)
-    K = kron(K,g1)-E
+    K = q_kron(K,g1,0.8)-E
     K = K.T@K
     u,rk,_ = svd(K,full_matrices=0)
     rk = sum(rk>1e-10)

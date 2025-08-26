@@ -13,6 +13,7 @@ def StandardMapsID(K,M,NE,p0,q0,S):
     from SpaRCSim import SpaRCSim
     from matplotlib.pyplot import figure,show,grid,tight_layout,scatter,plot,xlabel,ylabel,title
     from numpy import array, kron, identity, zeros
+    from qkron import q_kron   ##  rwsp
     from numpy.linalg import norm
     from time import time
     
@@ -26,18 +27,18 @@ def StandardMapsID(K,M,NE,p0,q0,S):
     l = 5 
     tp = 3
     nz = int(s*l+(s*l)*(s*l+1)/2+(s*l)**3+1)
-    g1 = kron(K4gen[:,:s],identity(l))
-    g2 = kron(K4gen[:,s:],identity(l))
+    g1 = q_kron(K4gen[:,:s],identity(l),0.8)
+    g2 = q_kron(K4gen[:,s:],identity(l),0.8)
     dn = int(((s*l)**(tp+1)-s*l)/(s*l-1)+1)  # How can I define this value?
     G1 = zeros((dn,dn))
     G2 = zeros((dn,dn))
     G1[:s*l,:s*l] = g1
-    G1[s*l:((s*l)**(tp-1)+s*l),s*l:((s*l)**(tp-1)+s*l)] = kron(g1,g1)
-    G1[((s*l)**(tp-1)+s*l):-1,((s*l)**(tp-1)+s*l):-1] = kron(g1,kron(g1,g1))
+    G1[s*l:((s*l)**(tp-1)+s*l),s*l:((s*l)**(tp-1)+s*l)] = q_kron(g1,g1,0.8)
+    G1[((s*l)**(tp-1)+s*l):-1,((s*l)**(tp-1)+s*l):-1] = q_kron(g1,q_kron(g1,g1,0.8),0.8)
     G1[-1,-1] = 1
     G2[:s*l,:s*l] = g2
-    G2[s*l:((s*l)**(tp-1)+s*l),s*l:((s*l)**(tp-1)+s*l)] = kron(g2,g2)
-    G2[((s*l)**(tp-1)+s*l):-1,((s*l)**(tp-1)+s*l):-1] = kron(g2,kron(g2,g2))
+    G2[s*l:((s*l)**(tp-1)+s*l),s*l:((s*l)**(tp-1)+s*l)] = q_kron(g2,g2,0.8)
+    G2[((s*l)**(tp-1)+s*l):-1,((s*l)**(tp-1)+s*l):-1] = q_kron(g2,q_kron(g2,g2,0.8),0.8)
     G2[-1,-1] = 1
     t0 = time()
     w0,data,r = K4SymProjector(X.T,"svd",l,S,1,tp,nz,g1,g2,G1,G2,1e-3,1e-4)

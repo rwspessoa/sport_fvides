@@ -9,6 +9,7 @@ Example:
 
 def FinancialCompetitionSystem(r,a,b,c,S):
     from numpy import zeros, ones, linspace, identity, kron, where, hstack, savetxt
+    from qkron import q_kron   ##  rwsp
     from numpy.linalg import norm
     from Z5SymProjector import Z5SymProjector
     from SpaRCSim import SpaRCSim
@@ -36,7 +37,7 @@ def FinancialCompetitionSystem(r,a,b,c,S):
     
     G1 = zeros((s*l+(s*l)**2+1,s*l+(s*l)**2+1))
     G1[:s*l,:s*l] = g1
-    G1[s*l:-1,s*l:-1] = kron(G1[:s*l,:s*l],G1[:s*l,:s*l])
+    G1[s*l:-1,s*l:-1] = q_kron(G1[:s*l,:s*l],G1[:s*l,:s*l],0.8)
     G1[-1,-1] = 1
     
     
