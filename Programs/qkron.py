@@ -72,13 +72,13 @@ def q_kron(A: np.ndarray, B: np.ndarray, q: float) -> np.ndarray:
 
 # Example usage:
 # Generate two random arrays
-A = np.random.rand(1, 1)
-B = np.random.rand(2, 2)
+#A = np.random.rand(1, 1)
+#B = np.random.rand(2, 2)
 
-print("Array A:")
-print(A)
-print("\nArray B:")
-print(B)
+#print("Array A:")
+#print(A)
+#print("\nArray B:")
+#print(B)
 
-q_kron(A  = A ,B = B,q=0.8)
-print("\nKronecker q-product of A and B with q=0.8:")
+#q_kron(A  = A ,B = B,q=0.8)
+#print("\nKronecker q-product of A and B with q=0.8:")
