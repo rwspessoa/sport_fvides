@@ -1,0 +1,12 @@
+- Dynamical Systems 
+
+- Nonlinear Vector Autorregression NVAR
+
+- Advantages:
+ - Shorter training datasets 
+ - Less training time 
+
+- Extended Autoregressive Reservoir Computing 
+- Linear and Nonlinear Autorregresive Models 
+- Symmetry-preserving equivariant matrix 
+- Equiariant system identifiction  

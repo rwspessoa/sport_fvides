@@ -6,7 +6,7 @@ NLMap Nonlinear data mapping
    recurrent reservoir computers"
    by F. Vides
 @author: Fredy Vides
-"""
+""" 
 
 def NLMap(x,tp):
     from numpy import append, kron
