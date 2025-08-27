@@ -39,9 +39,9 @@ def q_product(x, y, q: float):
     res = np.zeros_like(base)
     ok = base > 0.0
     if np.any(ok):
-        res[ok] = np.sign(xm)*np.sign(ym)*np.power(base[ok], 1.0 / (1.0 - q))
-
-    out = res
+        res[ok] = np.power(base[ok], 1.0 / (1.0 - q))
+    
+    out = np.sign(xm)*np.sign(ym)*res
     return out
 
 def q_kron(A: np.ndarray, B: np.ndarray, q: float) -> np.ndarray:

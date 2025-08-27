@@ -7,7 +7,7 @@ Example 1:
     wr,w0,r,EMconst = HamiltonianSystemID(600)
 @author: Fredy Vides, Department of Statistics and Research, CNBS, Honduras
 """
-def HamiltonianSystemID(S,qalg):
+def HamiltonianSystemID(S,qalg,q0 = 1.0, p0 = 0.1):
     from HamiltonianSystem import HamiltonianSystem
     from K4SymProjector import K4SymProjector
     from SpaRCSim import SpaRCSim
@@ -17,7 +17,7 @@ def HamiltonianSystemID(S,qalg):
     from numpy.linalg import norm
     from time import time
     
-    t,X = HamiltonianSystem()
+    t,X = HamiltonianSystem(q0=1, p0=0.1)
 
     print(X.shape)
     K4gen = array([[0,1,-1,0],[1,0,0,-1]])

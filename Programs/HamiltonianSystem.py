@@ -4,7 +4,7 @@ Lorenz system simulator
 @author: Fredy Vides
 """
 
-def HamiltonianSystem(q0 = 1.0, p0 = 0.0):
+def HamiltonianSystem(q0 = 1.0, p0 = 0.1):
     from numpy import arange
     from scipy.integrate import odeint
     
@@ -16,7 +16,7 @@ def HamiltonianSystem(q0 = 1.0, p0 = 0.0):
         return [dq, dp]
     
     y0 = [q0, p0]
-    t = arange(0.0, 40.0, 0.01)
+    t = arange(0.0, 400.0, 0.01)
     
     z = odeint(Hamiltonian, y0, t, rtol = 1e-10, atol = 1e-10)
     
