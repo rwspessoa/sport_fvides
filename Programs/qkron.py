@@ -39,7 +39,7 @@ def q_product(x, y, q: float):
     res = np.zeros_like(base)
     ok = base > 0.0
     if np.any(ok):
-        res[ok] = np.power(base[ok], 1.0 / (1.0 - q))
+        res[ok] = np.sign(xm)*np.sign(ym)*np.power(base[ok], 1.0 / (1.0 - q))
 
     out = res
     return out
