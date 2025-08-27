@@ -7,7 +7,7 @@ RCIdentifier  Reservoir computer simulator
 @author: Fredy Vides
 """
 
-def SpaRCSim(w,x0,tp,N):
+def SpaRCSim(w,x0,tp,N,qalg):
     from numpy import zeros
     from NLMap import NLMap
     
@@ -16,6 +16,6 @@ def SpaRCSim(w,x0,tp,N):
     r[:,0] = x0
         
     for k in range(N):
-        r[:,k+1] = w@NLMap(r[:,k],tp)
+        r[:,k+1] = w@NLMap(r[:,k],tp,qalg)
                 
     return r

@@ -4,19 +4,19 @@ RFactor
 @author: doctor
 """
 
-def RFactor(s,L,tp,method = "random",tol = 1e-15, scale = 1e0):
+def RFactor(s,L,tp,method = "random",tol = 1e-15, scale = 1e0, qalg=1):
     from numpy import zeros, where, vstack
     from NLMap import NLMap
     sL = s*L
     if method == "random":
         from numpy.random import randn
         z = scale*randn(sL,1)
-        z = NLMap(z, tp)
+        z = NLMap(z, tp, qalg)
         z[-1] = scale*randn()
     elif method == "prime":
         from PrimeGenerator import PrimeGenerator
         z0 = PrimeGenerator(sL+1,int(sL/2))
-        z = NLMap(z0[:-1], tp)
+        z = NLMap(z0[:-1], tp, qalg)
         z[-1] = z0[-1]
     N = int((sL**(tp+1)-sL)/(sL-1))+1
     w0 = zeros((1,N))

@@ -7,7 +7,7 @@ Example 1:
     wr,w0,r,EMconst = HamiltonianSystemID(600)
 @author: Fredy Vides, Department of Statistics and Research, CNBS, Honduras
 """
-def HamiltonianSystemID(S):
+def HamiltonianSystemID(S,qalg):
     from HamiltonianSystem import HamiltonianSystem
     from K4SymProjector import K4SymProjector
     from SpaRCSim import SpaRCSim
@@ -26,25 +26,25 @@ def HamiltonianSystemID(S):
     l = 5
     tp = 3
     nz = int(s*l+(s*l)*(s*l+1)/2+(s*l)**3+1)
-    g1 = q_kron(K4gen[:,:s],identity(l),0.8)
-    g2 = q_kron(K4gen[:,s:],identity(l),0.8)
+    g1 = q_kron(K4gen[:,:s],identity(l),qalg)
+    g2 = q_kron(K4gen[:,s:],identity(l),qalg)
     dn = int(((s*l)**(tp+1)-s*l)/(s*l-1)+1)
     G1 = zeros((dn,dn))
     G2 = zeros((dn,dn))
     G1[:s*l,:s*l] = g1
-    G1[s*l:((s*l)**(tp-1)+s*l),s*l:((s*l)**(tp-1)+s*l)] = q_kron(g1,g1,0.8)
-    G1[((s*l)**(tp-1)+s*l):-1,((s*l)**(tp-1)+s*l):-1] = q_kron(g1,q_kron(g1,g1,0.8),0.8)
+    G1[s*l:((s*l)**(tp-1)+s*l),s*l:((s*l)**(tp-1)+s*l)] = q_kron(g1,g1,qalg)
+    G1[((s*l)**(tp-1)+s*l):-1,((s*l)**(tp-1)+s*l):-1] = q_kron(g1,q_kron(g1,g1,qalg),qalg)
     G1[-1,-1] = 1
     G2[:s*l,:s*l] = g2
-    G2[s*l:((s*l)**(tp-1)+s*l),s*l:((s*l)**(tp-1)+s*l)] = q_kron(g2,g2,0.8)
-    G2[((s*l)**(tp-1)+s*l):-1,((s*l)**(tp-1)+s*l):-1] = q_kron(g2,q_kron(g2,g2,0.8),0.8)
+    G2[s*l:((s*l)**(tp-1)+s*l),s*l:((s*l)**(tp-1)+s*l)] = q_kron(g2,g2,qalg)
+    G2[((s*l)**(tp-1)+s*l):-1,((s*l)**(tp-1)+s*l):-1] = q_kron(g2,q_kron(g2,g2,qalg),qalg)
     G2[-1,-1] = 1
     t0 = time()
     print("Parece tudo ok!")
-    w0,data,r = K4SymProjector(X.T,"svd",l,S,1,tp,nz,g1,g2,G1,G2,1e-3,1e-4)
+    w0,data,r = K4SymProjector(X.T,"svd",l,S,1,tp,nz,g1,g2,G1,G2,1e-3,1e-4,qalg)
     wr = w0@r
     print("Elapsed time: ",time()-t0)
-    y = SpaRCSim(wr,data[:s*l,-1],tp,L-S+l-1)
+    y = SpaRCSim(wr,data[:s*l,-1],tp,L-S+l-1,qalg)
     fig0 = figure()
     ax00 = fig0.add_subplot(1,2,1)
     ax00.plot(X[:S,0],X[:S,1],'b')

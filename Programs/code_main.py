@@ -44,8 +44,8 @@ tt, zz = HamiltonianSystem()
 #print(z.dtype)
 
 
-wr,w0,r,EMconst = HamiltonianSystemID(600)
-#print(wr)
-#print(w0)
-#print(r)
-#print(EMconst)
+wr,w0,r,EMconst = HamiltonianSystemID(600,qalg = 0.999999)
+print(wr)
+print(w0)
+print(r)
+print(EMconst)

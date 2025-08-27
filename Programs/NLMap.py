@@ -8,14 +8,14 @@ NLMap Nonlinear data mapping
 @author: Fredy Vides
 """ 
 
-def NLMap(x,tp):
+def NLMap(x,tp,qalg):
     from numpy import append, kron
     from qkron import q_kron   ##  rwsp
 
     p = x
     q = p
     for k in range(tp-1):
-        q = q_kron(x,q,0.8)
+        q = q_kron(x,q,qalg)
         p = append(p,q)
     p = append(p,1)
     return p
